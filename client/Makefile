@@ -1,22 +1,31 @@
-PROGNAME=opencv_demo
-
+PROGNAME = cardtracking imagerecognition
 CXX = g++
 CFLAGS += 
 CPPFLAGS +=
 CXXFLAGS += -g -Wall
-LDFLAGS += $(shell pkg-config --libs opencv)
+LDFLAGS_CT += $(shell pkg-config --libs opencv)
+LDFLAGS_IR += -lpHash
 INCLUDE_DIR +=
 
-OBJFILES := $(patsubst %.cpp,obj/%.o,$(wildcard *.cpp))
+OBJFILES_CT := $(patsubst ct/%.cpp,obj/ct/%.o,$(wildcard ct/*.cpp))
+OBJFILES_IR := $(patsubst ir/%.cpp,obj/ir/%.o,$(wildcard ir/*.cpp))
 
 all: $(PROGNAME)
 
-$(PROGNAME): $(OBJFILES) 
-	echo ${LDFLAGS}
-	$(CXX) -o $(PROGNAME) $(INCLUDE_DIR) $(OBJFILES) $(LDFLAGS)
+cardtracking: $(OBJFILES_CT) 
+	echo $(OBJFILES_CT)
+	$(CXX) -o $@ $(INCLUDE_DIR) $(OBJFILES_CT) $(LDFLAGS_CT)
 
-obj/%.o: %.cpp 
-	@mkdir -p obj
+imagerecognition: $(OBJFILES_IR) 
+	$(CXX) -o $@ $(INCLUDE_DIR) $(OBJFILES_IR) $(LDFLAGS_IR)
+
+obj/ct/%.o: ct/%.cpp 
+	echo ${OBJ_FILES_CT}
+	@mkdir -p obj/ct
+	$(CXX) -c $< -o $@ $(CFLAGS) $(CPPFLAGS) $(CXXFLAGS)
+
+obj/ir/%.o: ir/%.cpp 
+	@mkdir -p obj/ir
 	$(CXX) -c $< -o $@ $(CFLAGS) $(CPPFLAGS) $(CXXFLAGS)
 
 clean:
