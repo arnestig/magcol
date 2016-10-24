@@ -29,7 +29,6 @@ namespace ih
         cv::VideoCapture m_capture;
         
         std::atomic<bool> m_running;
-        //cv::Mat m_frame;
     };
 
 }

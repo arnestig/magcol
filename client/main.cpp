@@ -1,8 +1,6 @@
 // ClassifierTester.cpp : Defines the entry point for the console application.
 //
 
-#include "stdafx.h"
-
 #include "ih\ImageSourceIfc.h"
 
 #include "ih\ImageSourceVideoFile.h"
@@ -20,16 +18,16 @@ int main(int argc, char ** argv)
 
     if (argc == 2)
     {
-        imgSrc = new ih::ImageSourceVideoFile();
+        imgSrc = new ih::ImageSourceVideoFile(std::string(argv[1]));
     }
     else
     {
         imgSrc = new ih::ImageSourceWebcam();
     }
 
-    ih::ImageSubscriberIfc* mtgCR = new cr::MTGCardRecognizer();
+    cr::MTGCardRecognizer* mtgCR = new cr::MTGCardRecognizer();
 
-    imgSrc->subscribe(mtgCR);
+    imgSrc->subscribe(dynamic_cast<ih::ImageSubscriberIfc*>(mtgCR));
 
     imgSrc->start();
     

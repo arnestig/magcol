@@ -3,8 +3,6 @@
 namespace ih
 {
 
-#define DEBUG 1
-
 ImageSourceWebcam::ImageSourceWebcam() :
     m_running(false)
 {
@@ -74,13 +72,6 @@ void ImageSourceWebcam::frameGrabber()
         }
 
         m_subscriber->onImage(frame);
-        
-#ifdef DEBUG
-        //cv::imshow("Image Source Webcam debugging window", frame);
-        //int c = cv::waitKey(10);
-        //if ((char)c == 27) { break; }
-#endif // DEBUG
-
     }
 }
 

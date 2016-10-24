@@ -20,7 +20,6 @@ namespace cr
 
     private:
         cv::CascadeClassifier m_cascade;
-        int m_tempCounter = 0;
     };
 
 }
