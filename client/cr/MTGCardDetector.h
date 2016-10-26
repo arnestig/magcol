@@ -1,8 +1,8 @@
 #ifndef MTG_CARD_DETECTOR_H
 #define MTG_CARD_DETECTOR_H
 
-#include "opencv2/imgproc.hpp"
-#include "opencv2/objdetect.hpp"
+#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/objdetect/objdetect.hpp>
 
 #include <vector>
 

@@ -1,7 +1,7 @@
 #ifndef MTG_CARD_IDENTIFIER_H
 #define MTG_CARD_IDENTIFIER_H
 
-#include "opencv2/imgproc.hpp"
+#include <opencv2/imgproc/imgproc.hpp>
 
 namespace cr
 {

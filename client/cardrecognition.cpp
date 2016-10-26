@@ -1,11 +1,11 @@
 // ClassifierTester.cpp : Defines the entry point for the console application.
 //
 
-#include "ih\ImageSourceIfc.h"
+#include "ih/ImageSourceIfc.h"
 
-#include "ih\ImageSourceVideoFile.h"
-#include "ih\ImageSourceWebcam.h"
-#include "cr\MTGCardRecognizer.h"
+#include "ih/ImageSourceVideoFile.h"
+#include "ih/ImageSourceWebcam.h"
+#include "cr/MTGCardRecognizer.h"
 
 
 #include <thread>        

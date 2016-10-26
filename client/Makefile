@@ -1,35 +1,46 @@
-PROGNAME = cardtracking imagerecognition
+PROGNAME = cardrecognition genimagehash
 CXX = g++
 CFLAGS += 
 CPPFLAGS +=
 CXXFLAGS += -g -Wall
-LDFLAGS_CT += $(shell pkg-config --libs opencv)
-LDFLAGS_IR += -lpHash
-INCLUDE_DIR +=
+LDFLAGS_CR += $(shell pkg-config --libs opencv)
+LDFLAGS_IR += -lpHash -pthread -Lir/mvptree -lmvptree
+LDFLAGS_GIH += -lpHash -pthread
+INCLUDE_DIR_IR += -Iir/mvptree
+INCLUDE_DIR_CR += 
 
-OBJFILES_CT := $(patsubst ct/%.cpp,obj/ct/%.o,$(wildcard ct/*.cpp))
-OBJFILES_IR := $(patsubst ir/%.cpp,obj/ir/%.o,$(wildcard ir/*.cpp))
+OBJFILES_CR := $(patsubst cr/%.cpp,obj/cr/%.o,$(wildcard cr/*.cpp))
+OBJFILES_IH := $(patsubst ih/%.cpp,obj/ih/%.o,$(wildcard ih/*.cpp))
+OBJFILES_CR += obj/cardrecognition.o
 
-all: $(PROGNAME)
+MODULES = cr ih
+OBJ_DIRECTORIES = $(addprefix obj/,$(MODULES))
 
-cardtracking: $(OBJFILES_CT) 
-	echo $(OBJFILES_CT)
-	$(CXX) -o $@ $(INCLUDE_DIR) $(OBJFILES_CT) $(LDFLAGS_CT)
+all: create_obj_dirs $(PROGNAME)
 
-imagerecognition: $(OBJFILES_IR) 
-	$(CXX) -o $@ $(INCLUDE_DIR) $(OBJFILES_IR) $(LDFLAGS_IR)
+genimagehash: obj/genimagehash.o
+	$(CXX) -o $@ obj/genimagehash.o -lpHash -pthread
 
-obj/ct/%.o: ct/%.cpp 
-	echo ${OBJ_FILES_CT}
-	@mkdir -p obj/ct
+cardrecognition: $(OBJFILES_CR) $(OBJFILES_IH)
+	$(CXX) -o $@ $(INCLUDE_DIR_CR) $(OBJFILES_CR) $(OBJFILES_IH) $(LDFLAGS_CR)
+
+obj/%.o: %.cpp
 	$(CXX) -c $< -o $@ $(CFLAGS) $(CPPFLAGS) $(CXXFLAGS)
 
-obj/ir/%.o: ir/%.cpp 
-	@mkdir -p obj/ir
+obj/ih/%.o: cr/%.cpp
+	$(CXX) -c $< -o $@ $(CFLAGS) $(CPPFLAGS) $(CXXFLAGS)
+
+obj/ih/%.o: ih/%.cpp
 	$(CXX) -c $< -o $@ $(CFLAGS) $(CPPFLAGS) $(CXXFLAGS)
 
 clean:
-	rm -f $(OBJFILES) $(PROGNAME)
+	rm -f $(OBJFILES_CR) $(OBJFILES_IH) $(PROGNAME)
 
 rebuild: clean all
 
+create_obj_dirs: $(OBJ_DIRECTORIES)
+
+$(OBJ_DIRECTORIES): 
+	mkdir -p $@
+
+.PHONY: create_obj_dirs

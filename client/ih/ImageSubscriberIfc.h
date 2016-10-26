@@ -1,7 +1,7 @@
 #ifndef IMAGE_SUBSCRIBER_IFC_H
 #define IMAGE_SUBSCRIBER_IFC_H
 
-#include "opencv2/imgproc.hpp"
+#include <opencv2/imgproc/imgproc.hpp>
 
 namespace ih
 {
