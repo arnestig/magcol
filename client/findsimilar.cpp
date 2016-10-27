@@ -36,7 +36,7 @@ inline std::vector< std::string > glob( const std::string& directory )
     return retval;
 }
 
-void findBestDCTMatch( hashFile targetfile, std::vector< hashFile > imageHashes )
+void findBestDCTMatch( hashFile targetfile, std::vector< hashFile > imageHashes, int numberOfMatches )
 {
     ulong64 hash;
     for( std::vector< hashFile >::iterator it = imageHashes.begin(); it != imageHashes.end(); ++it ) {
@@ -44,7 +44,7 @@ void findBestDCTMatch( hashFile targetfile, std::vector< hashFile > imageHashes 
     }
     std::sort( imageHashes.begin(), imageHashes.end(), DCTSorter );
 
-    for( int i = 0; i < 10; i++ ) {
+    for( int i = 0; i < numberOfMatches; i++ ) {
         std::cout << imageHashes[ i ].filename << " - " << imageHashes[ i ].distance << std::endl;
     }
 }
@@ -112,19 +112,19 @@ hashFile loadHashFromFile( std::string filename )
 
 int main( int argc, char *argv[] )
 {
-    if ( argc == 3 ) {
-        std::string directory = argv[1];
+    if ( argc == 4 ) {
+        std::string directory = argv[2];
         directory += "/*.hash";
-        hashFile targetfile = loadHashFromFile( argv[2] );
+        hashFile targetfile = loadHashFromFile( argv[3] );
         std::vector< hashFile > imageHashes;
         std::vector< std::string > files = glob( directory );
         for( std::vector< std::string >::iterator it = files.begin(); it != files.end(); ++it ) {
             hashFile tmph = loadHashFromFile( (*it) );
             imageHashes.push_back( tmph );
         }
-        findBestDCTMatch( targetfile, imageHashes );
+        findBestDCTMatch( targetfile, imageHashes, atoi(argv[1]) );
     } else {
-        std::cout << "Error! Usage: findsimilar <directory with hashes> <filename>" << std::endl;
+        std::cout << "Error! Usage: findsimilar <number of matches> <directory with hashes> <filename>" << std::endl;
         return 1;
     }
     return 0;
