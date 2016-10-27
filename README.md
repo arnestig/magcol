@@ -3,9 +3,13 @@ Magic: The Gathering collection manager
 
 # Prerequisites
 For running and developing magcol you will need the following packages:
+ Server:
  - php
  - postgresql
  - perl
+ Client:
+ - pHash
+ - opencv
 
 Installing on a Debian-based system you can:
 ```
@@ -37,5 +41,5 @@ curl http://127.0.0.1:8080
 
 purge the database and re-populate:
 ```
-for sql in $(ls database/*.sql); do sudo -u postgres psql -f $sql; done
+for sql in $(ls server/database/*.sql); do sudo -u postgres psql -f $sql; done
 ```
