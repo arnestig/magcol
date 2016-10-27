@@ -1,4 +1,4 @@
-PROGNAME = cardrecognition genimagehash
+PROGNAME = cardrecognition genimagehash findsimilar
 CXX = g++
 CFLAGS += 
 CPPFLAGS += 
@@ -17,6 +17,9 @@ MODULES = cr ih
 OBJ_DIRECTORIES = $(addprefix obj/,$(MODULES))
 
 all: create_obj_dirs $(PROGNAME)
+
+findsimilar: obj/findsimilar.o
+	$(CXX) -o $@ obj/findsimilar.o -lpHash -pthread
 
 genimagehash: obj/genimagehash.o
 	$(CXX) -o $@ obj/genimagehash.o -lpHash -pthread

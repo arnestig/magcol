@@ -7,18 +7,18 @@
 #include <glob.h>
 #include <vector>
 #include <algorithm>
-#include <string>
+#include <string> 
 
-struct dctResult
+struct hashFile
 {
     std::string filename;
-    ulong64 hashval;
+    ulong64 dct;
+    Digest dig;
+    uint8_t *mh_hash;
     int distance;
 };
 
-std::vector< dctResult > DCTvector;
-
-static bool DCTSorter( dctResult l, dctResult r )
+static bool DCTSorter( hashFile l, hashFile r )
 {
     return l.distance < r.distance;
 }
@@ -36,22 +36,16 @@ inline std::vector< std::string > glob( const std::string& directory )
     return retval;
 }
 
-void findBestDCTMatch( std::string basefile, std::string directory )
+void findBestDCTMatch( hashFile targetfile, std::vector< hashFile > imageHashes )
 {
     ulong64 hash;
-    ph_dct_imagehash(basefile.c_str(), hash);
-    std::vector< std::string > files = glob( directory );
-    for( std::vector< std::string >::iterator it = files.begin(); it != files.end(); ++it ) {
-        dctResult res;
-        res.filename = (*it);
-        ph_dct_imagehash((*it).c_str(), res.hashval);
-        res.distance = ph_hamming_distance(hash, res.hashval);
-        DCTvector.push_back( res );
+    for( std::vector< hashFile >::iterator it = imageHashes.begin(); it != imageHashes.end(); ++it ) {
+        (*it).distance = ph_hamming_distance(targetfile.dct, (*it).dct);
     }
-    std::sort( DCTvector.begin(), DCTvector.end(), DCTSorter );
+    std::sort( imageHashes.begin(), imageHashes.end(), DCTSorter );
 
-    for( int i = 0; i < 5; i++ ) {
-        std::cout << DCTvector[ i ].filename << " - " << DCTvector[ i ].distance << std::endl;
+    for( int i = 0; i < 10; i++ ) {
+        std::cout << imageHashes[ i ].filename << " - " << imageHashes[ i ].distance << std::endl;
     }
 }
 
@@ -78,48 +72,59 @@ void hashes()
     }
 }
 
-void genHashFromFile( std::string filename )
+hashFile loadHashFromFile( std::string filename )
 {
-    std::string outputfilename = filename + ".hash";
-    FILE *hash_results;
-    hash_results = fopen( outputfilename.c_str(), "w" );
+    hashFile retval;
+    retval.filename = filename;
+    FILE *hash_file;
+    hash_file = fopen( filename.c_str(), "r" );
+    char buf[1024];
 
+    /**
     // MH
-    int alpha = 2;
-    int level = 1;
-    int mh_hashlen = 0;
     uint8_t *hash = ph_mh_imagehash( filename.c_str(), mh_hashlen, alpha, level );
-    fprintf(hash_results,"MH: ");
     for ( int i = 0; i < mh_hashlen; i++ ) {
         fprintf(hash_results,"%02x", hash[ i ] );
     }
-    fprintf(hash_results,"\n");
+    **/
+    fgets(buf, 1024, hash_file);
 
     // DCT
     ulong64 dct_hash;
-    ph_dct_imagehash(filename.c_str(), dct_hash);
-    fprintf(hash_results,"DCT: %llx\n", dct_hash );
+    fgets(buf, 1024, hash_file);
+    sscanf(buf,"DCT: %llx\n", &dct_hash );
+    retval.dct = dct_hash;
 
     // radial
     Digest file_dig;
-    ph_image_digest(filename.c_str(), 1.0, 1.0, file_dig, 180);
-    fprintf( hash_results, "Radial: %d", file_dig.size );
+    /**fprintf( hash_results, "Radial: %d", file_dig.size );
     for ( int i = 0; i < file_dig.size; i++ ) {
         fprintf(hash_results, ",%02x", file_dig.coeffs[ i ] );
     }
     fprintf(hash_results, "\n");
 
     std::cout << "Created " << filename << ".hash" << std::endl;
-    fclose( hash_results );
+    **/
+    fclose( hash_file );
+    return retval;
 }
 
 
 int main( int argc, char *argv[] )
 {
-    if ( argc == 2 ) {
-        genHashFromFile( argv[1] );
+    if ( argc == 3 ) {
+        std::string directory = argv[1];
+        directory += "/*.hash";
+        hashFile targetfile = loadHashFromFile( argv[2] );
+        std::vector< hashFile > imageHashes;
+        std::vector< std::string > files = glob( directory );
+        for( std::vector< std::string >::iterator it = files.begin(); it != files.end(); ++it ) {
+            hashFile tmph = loadHashFromFile( (*it) );
+            imageHashes.push_back( tmph );
+        }
+        findBestDCTMatch( targetfile, imageHashes );
     } else {
-        std::cout << "Error! Usage: genimagehash <filename>" << std::endl;
+        std::cout << "Error! Usage: findsimilar <directory with hashes> <filename>" << std::endl;
         return 1;
     }
     return 0;
