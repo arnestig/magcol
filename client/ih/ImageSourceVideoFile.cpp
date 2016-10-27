@@ -45,8 +45,8 @@ int ImageSourceVideoFile::start()
 
     m_running = true;
 
-    frameGrabber();
-    //m_frameGrabberThread = std::thread(&ImageSourceWebcam::frameGrabber);
+    //frameGrabber();
+    m_frameGrabberThread = std::thread(&ImageSourceVideoFile::frameGrabber, this);
 
     return 0;
 }

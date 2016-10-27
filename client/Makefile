@@ -1,9 +1,9 @@
 PROGNAME = cardrecognition genimagehash
 CXX = g++
 CFLAGS += 
-CPPFLAGS +=
-CXXFLAGS += -g -Wall
-LDFLAGS_CR += $(shell pkg-config --libs opencv)
+CPPFLAGS += 
+CXXFLAGS += -g -Wall -std=c++11
+LDFLAGS_CR += $(shell pkg-config --libs opencv) -pthread
 LDFLAGS_IR += -lpHash -pthread -Lir/mvptree -lmvptree
 LDFLAGS_GIH += -lpHash -pthread
 INCLUDE_DIR_IR += -Iir/mvptree

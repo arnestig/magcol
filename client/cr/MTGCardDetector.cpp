@@ -38,7 +38,7 @@ void MTGCardDetector::detectCard(cv::Mat img, std::vector<cv::Rect>& cards)
         cv::cvtColor(img, frame_gray, cv::COLOR_BGR2GRAY);
         cv::equalizeHist(frame_gray, frame_gray);
 
-        m_cascade.detectMultiScale(frame_gray, cards, 1.1, 2, 0 /*| cv::CASCADE_SCALE_IMAGE*/, cv::Size(88, 124));
+        m_cascade.detectMultiScale(frame_gray, cards, 1.1, 2, 0 /*| cv::CASCADE_SCALE_IMAGE*/, cv::Size(110, 155));
     }
 }
 //------------------------------------------------------------------------------

@@ -30,12 +30,12 @@ int main(int argc, char ** argv)
     imgSrc->subscribe(dynamic_cast<ih::ImageSubscriberIfc*>(mtgCR));
 
     imgSrc->start();
-    
-    //when start has become non blocking
-    //while (true)
-    //{
-    //    std::this_thread::sleep_for(std::chrono::seconds(1));
-    //}
+
+
+    while (true)
+    {
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+    }
 
     return 0;
 }
