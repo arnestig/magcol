@@ -4,7 +4,17 @@ namespace ih
 {
 
 ImageSourceWebcam::ImageSourceWebcam() :
-    m_running(false)
+    m_running(false),
+    m_webcamIdx(0)
+{
+
+}
+
+//------------------------------------------------------------------------------
+
+ImageSourceWebcam::ImageSourceWebcam(int webcamIdx) :
+    m_running(false),
+    m_webcamIdx(webcamIdx)
 {
 
 }
@@ -25,7 +35,7 @@ void ImageSourceWebcam::subscribe(ImageSubscriberIfc * subscriber)
 
 int ImageSourceWebcam::start()
 {
-    m_capture.open(0);
+    m_capture.open(m_webcamIdx);
     if (!m_capture.isOpened())
     {
         printf("--(!)Error opening video capture\n");

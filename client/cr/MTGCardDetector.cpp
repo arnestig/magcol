@@ -5,7 +5,7 @@
 namespace cr
 {
 
-    static const std::string CASCADE_CLASSIFIER_FILE = "cascade.xml";
+    static const std::string CASCADE_CLASSIFIER_FILE = "resources/cascade.xml";
 
 MTGCardDetector::MTGCardDetector()
 {

@@ -14,6 +14,7 @@ namespace ih
     {
     public:
         ImageSourceWebcam();
+        ImageSourceWebcam(int webcamIdx);
         virtual ~ImageSourceWebcam();
 
         virtual void subscribe(ImageSubscriberIfc * subscriber);
@@ -29,6 +30,8 @@ namespace ih
         cv::VideoCapture m_capture;
         
         std::atomic<bool> m_running;
+
+        int m_webcamIdx;
     };
 
 }
