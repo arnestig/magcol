@@ -91,8 +91,4 @@ void MTGCardRecognizer::setOutputPath(std::string path)
 //------------------------------------------------------------------------------
 
 
-
-
-
-
 } //namespace cr

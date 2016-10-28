@@ -29,7 +29,7 @@ void printUsage()
     std::cout << "Usage: cardrecognition [option(s)]" << std::endl;
     std::cout << " -w  --webcam=[enum]       Set the enumerated webcam to use (default 0)" << std::endl;
     std::cout << " -f  --file                Path to video file as source"<< std::endl;
-    std::cout << " -o  --output              Saves every recognised card (in every frame) to specified output path" << std::endl;
+    std::cout << " -o  --output              Saves every recognised card (in every detection frame) to specified output path" << std::endl;
     std::cout << " -h  --help                Display this information" << std::endl;
     std::cout << " -v  --version             Print dhcrawl version" << std::endl;
     exit(0);
@@ -48,9 +48,9 @@ const option::Descriptor usage[] =
     { WEBCAM,     0, "w", "webcam",  option::Arg::Optional,    "  --webcam, -w  \tSet Webcam index (default 0)." },
     { VIDEO_FILE, 0, "f", "file",    option::Arg::Optional,    "  --file, -f  \tSet video file as image source" },
     { OUTPUT,     0, "o", "output",  option::Arg::Optional,    "  --output, -o  \tSet output directory for recognised card images (saves images for each frame)'" },
-    { UNKNOWN,    0, "" , "",        option::Arg::None, "\nExamples:\n"
-    "  cardrecognition --unknown -- --this_is_no_option\n"
-    "  cardrecognition --webcam 0 -o outputfolder \n" },
+    { UNKNOWN,    0, "" , "",        option::Arg::None, 
+        "\nExamples:\n"
+        "  cardrecognition --webcam 0 -o outputfolder \n" },
     { 0,0,0,0,0,0 }
 };
 

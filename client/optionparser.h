@@ -243,7 +243,7 @@ struct Arg
 {
   static ArgStatus None(const Option&, bool)
   {
-    return ARG_NONE;
+    return ARG_OK;
   }
 
   static ArgStatus Optional(const Option& option, bool)
