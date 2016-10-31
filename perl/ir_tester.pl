@@ -13,14 +13,17 @@ foreach my $photo_hash ( glob "../resources/photos/*.hash" ) {
     my @fsoutput = qx{../client/findsimilar 1 ../resources/hashes $photo_hash};
     foreach ( @fsoutput ) {
         my ($cur_cardname) = $photo_hash =~ /.*\/(.*)_photo\.jpg.hash/;
-        my ($type,$best_match,$score) = lc($_) =~ /(.*):.*\/(.*)_.*_\d+\.jpg\.hash - (\d+)/;
-
-        print "$type, $cur_cardname,$best_match,$score, ";
-        if ( $cur_cardname eq $best_match ) {
-            print "OK!\n";
-            $successful_cards{$type}++;
+        my ($type,$best_match,$score) = lc($_) =~ /(.*):.*\/(.*)_.*_\d+\.jpg\.hash - (.+)/;
+        if ( defined $type and defined $best_match and defined $score ) {
+            print "$type, $cur_cardname,$best_match,$score, ";
+            if ( $cur_cardname eq $best_match ) {
+                print "OK!\n";
+                $successful_cards{$type}++;
+            } else {
+                print "FAIL!\n";
+            }
         } else {
-            print "FAIL!\n";
+            print "$cur_cardname - NO MATCH - FAIL\n";
         }
     }
     $cards_counted++;

@@ -12,16 +12,24 @@ $| = 1;
 
 sub download_image
 {
-    my($multiverseid,$name) = @_;
+    my($multiverseid,$name,$expansion,$manacost) = @_;
     my $url = "http://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=$multiverseid&type=card";
-    print "Downloading $name\n";
-    system( "curl '$url' -o hashes/$name --silent" );
-    my $is_png = qx{file hashes/$name | grep -c PNG};
-    if ( $is_png ) {
-        system( "convert hashes/$name hashes/$name" );
+    if ( ! -e "../resources/hashes/$name.hash" ) {
+        print "Downloading $name\n";
+        system( "curl '$url' -o ../resources/hashes/$name --silent" );
+        my $is_png = qx{file ../resources/hashes/$name | grep -c PNG};
+        if ( $is_png ) {
+            system( "convert ../resources/hashes/$name ../resources/hashes/$name" );
+        }
+        system( "../client/genimagehash ../resources/hashes/$name $expansion $manacost" );
+        unlink( "../resources/hashes/$name" );
+    } else {
+        print "Updating $name\n";
+        open( HASH_FILE, ">>../resources/hashes/$name.hash" ) or die( "$!" );
+        print HASH_FILE "Expansion: $expansion\n";
+        print HASH_FILE "Manacost: $manacost\n";
+        close( HASH_FILE );
     }
-    system( "client/genimagehash hashes/$name" );
-    unlink( "hashes/$name" );
 }
 
 if ( ! -e "AllSets.json" ) {
@@ -32,7 +40,7 @@ if ( ! -e "AllSets.json" ) {
 
 open( JSON_DB, "<AllSets.json" ) or die( "Error: $!" );
 my $json = JSON->new->allow_nonref; my $json_ref = $json->decode( <JSON_DB> ); close( JSON_DB );
-foreach my $expansion ( keys %{ $json_ref } ) {
+foreach my $expansion ( sort {$a cmp $b} keys %{ $json_ref } ) {
     foreach my $card ( @{ $json_ref->{ $expansion }{ cards } } ) {
         my $name = $card->{ name };
         $name =~ s/[^a-zA-Z ]//g;
@@ -41,6 +49,12 @@ foreach my $expansion ( keys %{ $json_ref } ) {
             my $mid = $card->{ multiverseid };
             my %image;
             $image{ mid } = $mid;
+            $image{ expansion } = $expansion;
+            if ( $card->{ manaCost } ) {
+                $image{ manaCost } = $card->{ manaCost };
+            } else {
+                $image{ manaCost } = "";
+            }
             $image{ name } = "$name\_$expansion\_$mid.jpg";
             push( @images, \%image );
         }
@@ -58,10 +72,8 @@ while ( @images ) {
     }
 
     foreach my $image ( @images_to_download ) {
-        if ( ! -e "hashes/$image->{ name }.hash" ) {
-            my $thread = threads->new(\&download_image, $image->{ mid }, $image->{ name } );
-            push( @thread_pool, $thread );
-        }
+        my $thread = threads->new(\&download_image, $image->{ mid }, $image->{ name }, $image->{ expansion }, $image->{ manaCost } );
+        push( @thread_pool, $thread );
     }
 
     foreach ( @thread_pool ) {

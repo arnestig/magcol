@@ -17,6 +17,8 @@ struct hashFile
     uint8_t *mh_hash;
     int distance;
     double correlation;
+    std::string expansion;
+    std::string manaCost;
 };
 
 static bool RadialSorter( hashFile l, hashFile r )
@@ -50,8 +52,11 @@ void findBestDCTMatch( hashFile targetfile, std::vector< hashFile > imageHashes,
     }
     std::sort( imageHashes.begin(), imageHashes.end(), DCTSorter );
 
-    for( int i = 0; i < numberOfMatches; i++ ) {
+    for( int i = 0; i < numberOfMatches && i < imageHashes.size(); i++ ) {
         std::cout << "DCT: " << imageHashes[ i ].filename << " - " << imageHashes[ i ].distance << std::endl;
+    }
+    if ( imageHashes.empty() ) {
+        std::cout << "DCT: NO MATCH - 0" << std::endl;
     }
 }
 
@@ -62,8 +67,11 @@ void findBestRadialMatch( hashFile targetFile, std::vector< hashFile > imageHash
     }
     std::sort( imageHashes.begin(), imageHashes.end(), RadialSorter );
 
-    for( int i = 0; i < numberOfMatches; i++ ) {
+    for( int i = 0; i < numberOfMatches && i < imageHashes.size(); i++ ) {
         std::cout << "Radial: " << imageHashes[ i ].filename << " - " << std::setprecision(2) << imageHashes[ i ].correlation << std::endl;
+    }
+    if ( imageHashes.empty() ) {
+        std::cout << "Radial: NO MATCH - 0" << std::endl;
     }
 }
 
@@ -133,6 +141,15 @@ hashFile loadHashFromFile( std::string filename )
         token=strtok(NULL,",");
         i++;
     }
+
+    // Expansion
+    fgets( buf, 1024, hash_file );
+    retval.expansion = buf;
+
+    // Mana cost
+    fgets( buf, 1024, hash_file );
+    retval.manaCost = buf;
+
     retval.dig = file_dig;
     //free( file_dig.coeffs);
     fclose( hash_file );
@@ -150,7 +167,10 @@ int main( int argc, char *argv[] )
         std::vector< std::string > files = glob( directory );
         for( std::vector< std::string >::iterator it = files.begin(); it != files.end(); ++it ) {
             hashFile tmph = loadHashFromFile( (*it) );
-            imageHashes.push_back( tmph );
+            if ( tmph.expansion == targetfile.expansion
+            && tmph.manaCost == targetfile.manaCost ) {
+                imageHashes.push_back( tmph );
+            }
         }
         findBestDCTMatch( targetfile, imageHashes, atoi(argv[1]) );
         findBestRadialMatch( targetfile, imageHashes, atoi(argv[1]) );
