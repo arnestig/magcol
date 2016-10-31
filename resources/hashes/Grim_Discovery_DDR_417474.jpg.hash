@@ -1,3 +1,5 @@
 MH: 0c8e470391f8fc7e3a0ae9a9b92c5398ab55a7dcaeb1852ec1a26c0927059c3c3bc6d86c88c1c8ec7c3f1e0e8e65f63d9b0f870381e16df0a25c8e40e1f1bf22c3f4e45fc71f8f86
 DCT: af34e204bf5052af
 Radial: 40,c5,a3,00,ff,5f,a0,db,c1,b9,c6,bc,e5,c2,b6,d5,b8,bf,d5,ca,d3,c0,b6,d4,bd,cc,c7,c1,ca,c6,b9,c7,c7,c2,c7,c3,d0,be,bd,c6,c5
+Expansion: DDR
+Manacost: {1}{B}

@@ -1,3 +1,5 @@
 MH: 1d8f8703a1e8f0783224cf2781fe15c7e0d224435d0449c5b8c69224db4ed434691e1d9224fe3a1c8e04a3829224d95e3e7e3a795c9224de3f1f8fc7e3f0b22485cce0703a9c3a96
 DCT: b3302b49ed0cbea3
 Radial: 40,b2,62,00,b8,4a,ff,f6,9a,b3,d0,b6,7a,e7,c6,ad,97,c2,b5,98,bc,bc,ac,bb,b5,a5,bc,b4,a6,b2,bf,be,9f,b7,b4,a2,b0,bc,b7,aa,b4
+Expansion: S99
+Manacost: {1}{W}

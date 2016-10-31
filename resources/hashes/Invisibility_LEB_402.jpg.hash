@@ -1,3 +1,5 @@
 MH: 1d8e8723f1d8f074322488e704ac1c19e8b624b6f3eacda0fe2cb224941064f0d3c6abb224ae078381309fac9624dd2f0787d0e3b99224fb0cf85671ece6b220e3f0fc7e3a9f2d32
 DCT: aea8af03bb40e0af
 Radial: 40,a6,85,00,fe,43,a1,a1,83,91,b8,ac,a4,b2,99,a4,9b,a2,af,9c,b9,a4,96,b1,a0,ab,b2,a9,a8,a7,9e,ae,9c,ad,ad,9f,ac,9e,9d,a9,a6
+Expansion: LEB
+Manacost: {U}{U}

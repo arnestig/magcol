@@ -1,3 +1,5 @@
 MH: 0d8e070381f8fc7e3b24c05e037e88be33b204968367c1dc1f319264e8b351ee13c062d220d1c8f0703b1f8f0724f07f1f8fc7e3e1b22487c1f7f1f8fe71b2268f479385c0f276a6
 DCT: ab832f1ebe5041ae
 Radial: 40,d2,f9,00,e0,3f,b5,af,b4,ae,ff,a2,c5,ef,e4,cd,cd,de,e4,d3,d9,d7,c8,d5,bc,de,d8,d0,c6,d0,ca,d1,c6,c8,d8,c6,d1,c9,d2,c4,ca
+Expansion: KLD
+Manacost: {5}

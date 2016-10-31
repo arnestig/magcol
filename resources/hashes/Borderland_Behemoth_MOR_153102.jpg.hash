@@ -1,3 +1,5 @@
 MH: 0d8e078381c01c783bdb782b1b2f070381a449666a2f08e58c0f244b6d55d194dea04b644941f0fc743c1e0f074972381c0e070381244b7e1f1f8dc6e2e1244c89c0e674695d6120
 DCT: 2e13a3c0fa192baf
 Radial: 40,b3,b2,2e,dc,00,7a,b7,7e,bf,fe,c8,ba,cc,b3,9e,9a,bc,cc,a8,cd,b6,9d,b5,a1,a7,bb,b9,a9,a6,ab,ae,ad,bc,c2,a7,b6,b2,aa,b3,b4
+Expansion: MOR
+Manacost: {5}{R}{R}

@@ -1,3 +1,5 @@
 MH: 0d8e478391f8fc7a3b495b35473da5b3204d49504b86f3d64738494d1b8ea27ad462bc4d49e1d8e472391e0f4f69785e1d8e2fc7e24949de3f0f8bc5e17049a4e36f0b8fc1f3f1b2
 DCT: bb1c1d10bf5041ef
 Radial: 40,ea,dd,00,fe,7c,e6,c4,d0,ec,f9,f5,fd,fd,db,e8,e1,e3,f6,f0,f1,ef,e4,ee,e0,f2,ea,eb,ee,e7,e6,e5,e3,e4,f0,e8,ef,e6,e9,e8,e5
+Expansion: VMA
+Manacost: {1}{R}{G}

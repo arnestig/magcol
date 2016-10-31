@@ -1,3 +1,5 @@
 MH: 0d8e8743b1f8fc7c3b4978b87a4938fc7a924911dc4b3c7a2aaab249638f82dcc07e8e9a49f1e0e07a3a1c8e964971781c0e070383244941f87c7c7f3f872445f1f8fc7e3f1f8f16
 DCT: eb06de0cae5470ab
 Radial: 40,c5,b2,00,fe,65,b5,be,c0,c1,c2,bd,c8,d5,bc,d5,c8,c8,c2,c3,c8,d0,be,d0,bd,c8,bf,bf,c4,c5,bf,c4,c7,bd,ca,bd,cc,c6,c6,c9,c4
+Expansion: BNG
+Manacost: {4}{R}{R}

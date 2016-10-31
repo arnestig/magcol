@@ -1,3 +1,5 @@
 MH: 0c8fc7e3b1f8fc7e3f49130bab8e11d9c6d649418e2a711e8837b34969032cb6d1f6349649f1d8e8743b1d0ed66970381c0e07038124496938d8cd1aa1f1204d8fc7e3f0f8ec3c16
 DCT: 2b32f283af0454bf
 Radial: 40,c2,ab,00,ff,45,a7,a0,bc,b5,dc,c0,cf,d7,a9,c2,c3,c4,c6,d0,d5,c0,af,c9,b5,ce,c3,d2,c2,ba,b9,bf,be,bb,c9,be,cc,c2,bc,c6,c1
+Expansion: PLC
+Manacost: {2}{U}

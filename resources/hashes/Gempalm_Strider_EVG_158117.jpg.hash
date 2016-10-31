@@ -1,3 +1,5 @@
 MH: 0d8f4723c1f87c7c3b4949218e1e4c7317b0db7ea372d96c6ca834db5ad2e27c7d373d2449a1c8f478391e8f866970383c6e170381244b0fc3e7f1b8dc7f254581c7e1f3b8e4e132
 DCT: bb303212bb4cccaf
 Radial: 40,e7,e5,00,f2,61,f7,fd,d6,da,e2,df,f8,ff,e5,eb,e3,ed,ee,d7,f8,e7,d5,fa,d8,e9,e2,e7,ea,de,e0,e3,e6,ea,eb,e0,f0,e7,e4,eb,e5
+Expansion: EVG
+Manacost: {1}{G}

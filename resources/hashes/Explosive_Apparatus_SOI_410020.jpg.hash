@@ -1,3 +1,5 @@
 MH: 8d8e078391c8fc7e3b4dcce86651f1e9c26d691d8af03de01e955949692d54fc41142e5d49f1c8f47c3f1d8f4f65fa385e0e270b81c26ce2b81c4e470bac9aa68347a78fc7151bb6
 DCT: bf58d9012f44c4bb
 Radial: 40,bf,85,00,ff,5d,9d,8f,c9,91,d3,d8,cd,b9,b0,bf,b9,b6,c5,b7,c1,b6,bb,c0,c2,c7,c5,c7,b6,c3,ba,b9,bb,c1,c4,bc,c5,ba,b8,b4,c3
+Expansion: SOI
+Manacost: {1}

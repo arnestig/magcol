@@ -1,3 +1,5 @@
 MH: 0d8f876070381c0e33db78389c0e072b188249e6f0d3ac542ac39669585d22ecbd8799626901c8ec763d1d8f934970381c0e271389244978297995eab0f52445a1e0ec345d1c6122
 DCT: eb8ea653fb0404ab
 Radial: 40,c4,b1,00,ff,50,9a,bb,b1,d0,de,c5,d6,ef,b8,bf,b1,bc,c6,bb,d2,c6,ae,d2,b2,c1,c2,c2,d3,be,c7,cd,bf,c1,d2,be,d8,c8,c0,c5,c1
+Expansion: M10
+Manacost: {2}{R}{R}

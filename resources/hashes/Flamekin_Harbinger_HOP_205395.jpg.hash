@@ -1,3 +1,5 @@
 MH: 0c8e072381e8fc7e3b49709dbc5f09c306c5db690b16b1aea4c34a496c6a107c929b114b49a1e0fc723b1d0e874973391c0e0707e12449094cf152ac3d0e6549f1f8fc7e3f1c6e27
 DCT: 8fc6f8303e54d0ab
 Radial: 40,b8,a6,00,fe,57,b8,76,a0,7e,b1,c5,a5,ca,bd,b4,ba,bc,b6,c0,bf,bd,b0,c5,ad,ba,a8,bd,b8,ab,b9,aa,c1,b5,bb,b4,bf,b5,b0,b6,bd
+Expansion: HOP
+Manacost: {R}

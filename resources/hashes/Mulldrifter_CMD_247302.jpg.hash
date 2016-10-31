@@ -1,3 +1,5 @@
 MH: 0d8fc76070381c0e174904d0dea1e703c1964962395f0179e3f1a64917343682e772f1244971f0fc7e3b1e8ed64970381c0e07038124db70795c2e8723e1244d83c0e17038e06122
 DCT: eb617c1cab0146be
 Radial: 40,bc,a1,00,ed,4d,91,e9,9d,ce,ff,ca,d5,c5,9f,bf,a6,c0,c5,bf,dd,c0,a5,ca,a3,c0,c4,bd,c5,b8,ba,c5,b6,b9,c4,b3,c7,c2,b5,bf,bc
+Expansion: CMD
+Manacost: {4}{U}

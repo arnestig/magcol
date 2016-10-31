@@ -1,3 +1,5 @@
 MH: 1d8f4743b1f8fc7e3a4968c583b1f87c7e9249c6d8fc656be41e926ddb0c3460f21c7cb26d11c8e4763c1c8e9269088744bf1773a124490fc7e3f079ddcd3444f1d8f47e1d1f8f16
 DCT: eb219c5cfe5440ab
 Radial: 40,d4,c8,00,ff,5c,a6,9c,c6,bd,e2,c7,e6,de,d7,d9,d5,d5,d6,e3,de,d4,c7,dd,d0,dc,d4,d8,d5,cc,cd,d4,d6,d1,d9,d4,da,ce,ce,d0,d6
+Expansion: DDI
+Manacost: {2}{W}

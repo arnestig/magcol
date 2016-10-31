@@ -1,3 +1,5 @@
 MH: 0d8fc763e0387c7c3a490bb89c4e731319244918e2be01e4a4b5b6690fdcdc1e0b8c4cb24931e0e0743a1c0e964970b8bc5e5f178f244907ece27b7c3fab2444f1f8fc7e1f1ce122
 DCT: 7b23a9a3ae0405fb
 Radial: 40,c5,a7,0a,22,00,8a,44,50,8d,d4,cc,df,ff,da,b5,d1,c7,d2,bd,fa,b4,c8,c1,c3,b5,d1,d3,d1,a6,dd,aa,d1,b1,e0,b1,d1,ba,cc,ad,cc
+Expansion: MBS
+Manacost: {1}{W}
