@@ -1,3 +1,5 @@
 MH: 6c8ec72070381c3a1769f41fa7813e2958496de0589895683f8a4d6db3a263e91e1e546969b1f0fc723b1e8e4f24f23b1c268fcb91496da7ceebb1ee5e22492970789c7e3f1f894f
 DCT: 7f318445fe1212af
 Radial: 40,d5,f5,11,b3,00,b6,81,c1,a7,ff,ae,dc,c7,e7,da,d3,dc,eb,eb,dd,eb,ca,e2,bf,e1,cd,d9,d0,d8,c7,d6,cf,c7,d8,c7,db,cd,d7,cf,d8
+Expansion: TSP
+Manacost: {X}{X}{R}

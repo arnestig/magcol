@@ -1,3 +1,5 @@
 MH: 1d8981c1a1d9e076327d3e0398c3daaa3296656c0fabe563c524b224b1e71f03c389d5b2247c1e9d8f41e0e096fb70f4ef43c9b79db624be3e1785e7e383b22187a503d15a9d6c32
 DCT: 3e1ebb03ab04eca9
 Radial: 40,d5,b8,00,f2,14,b4,e6,c1,e1,fe,df,d8,fe,d1,de,bf,d2,d4,c4,e6,c6,c8,cc,cf,d6,e6,d8,dc,d0,d1,dc,cc,dd,da,cd,d6,d7,d2,cd,d4
+Expansion: SCG
+Manacost: {3}{U}

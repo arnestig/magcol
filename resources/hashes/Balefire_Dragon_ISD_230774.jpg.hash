@@ -1,3 +1,5 @@
 MH: 1d8fc7e3f1f8fc7e3b658f87e2b1b85c7ed36cb90eed6a3aab989a6ce9750f23b3cdcada6d51e0fc76391c8e9749743e5e8fc743e1244971e3ebe1d0ecf52445d1f8fc763d1c4223
 DCT: bb98cd41bf1050af
 Radial: 40,c8,b2,00,ff,4c,9d,a6,b9,b7,d2,c9,db,cc,c1,c7,c3,cd,d6,d7,d2,cd,bd,cd,be,cc,cc,c9,c4,be,c4,c0,c6,c4,d1,c7,cf,c8,c4,c5,c4
+Expansion: ISD
+Manacost: {5}{R}{R}

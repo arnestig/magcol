@@ -1,3 +1,5 @@
 MH: 1e80c4e230e0e0723d72d3bb83b0daecbe4bb2e3ebbd353ea4f8cd2cf1d43b943f55c27525f2ab97afc3e3f16bdb2ac750f1a8bc0f65db15cce2b59874754d4c8e070381c0bc7e69
 DCT: 3b226e44af503abb
 Radial: 40,cd,b0,00,ff,6c,d0,dc,a1,cc,e7,d2,d9,dd,bd,d4,bf,cf,cf,c0,de,c2,bf,c8,cb,d3,d8,d4,d4,c9,c8,d4,c6,d2,d4,c8,cd,c7,c3,ca,cf
+Expansion: MIR
+Manacost: {3}{B}

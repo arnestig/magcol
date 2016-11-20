@@ -1,3 +1,5 @@
 MH: 0d8e4743f1f8fc7a3b49386663ebc568f4794de315432cbbe9f449493446e5b46a3f62494995f8f076391e0e4d69fa7abe2e371781496dd1e8fc7c3d1d8f4da48347070ce2f271b2
 DCT: ef311954fe4441ab
 Radial: 40,db,b9,00,fc,7a,db,93,ba,f5,e8,eb,ff,f0,dc,ce,c6,d8,ea,e5,d9,d7,ca,d5,db,e9,df,e8,de,d7,d8,d5,d5,d8,e4,df,df,d1,d9,d7,db
+Expansion: M15
+Manacost: {5}{W}{W}

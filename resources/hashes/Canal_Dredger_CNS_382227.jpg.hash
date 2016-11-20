@@ -1,3 +1,5 @@
 MH: 0d8e8743d1f8fc7e3e4972ac4c9266d05a924915a38f81ae39589249e26d9ca70782b0926881d0e8703b1d0e92617078bc0e171be1a4490e3f0b83ccf1712048f1f8dc3e3f1c50a2
 DCT: af20fe42be5450ab
 Radial: 40,dc,b5,00,ff,4f,d7,a5,d7,c4,ea,db,e5,ee,de,d4,d7,dc,dd,e3,e7,e2,d7,d8,d4,e8,e1,e8,d9,de,d8,d7,db,d8,e4,dd,de,d6,d7,d8,dd
+Expansion: CNS
+Manacost: {4}

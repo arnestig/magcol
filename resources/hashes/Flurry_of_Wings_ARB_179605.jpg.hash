@@ -1,3 +1,5 @@
 MH: 0d8e4723a1f8fc7a3b4d1cc1d60f1f15cdb649aab52e4c52d9c9926de043d3bc646382a64d51d8e876391f8f926972391c0e5703d1a2490e4f1f8fc7e3f12440f1f8fc7e3f1d8f87
 DCT: bf81a941fe1081ef
 Radial: 40,d3,e9,00,bb,75,ee,9e,d0,dd,f1,ff,eb,fb,f1,c4,cd,d1,cd,de,d2,e0,cb,d9,d0,d9,cc,e2,bf,d8,ce,c7,c9,d0,d2,d2,d5,d5,d1,ce,cf
+Expansion: ARB
+Manacost: {G}{W}{U}

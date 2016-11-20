@@ -1,3 +1,5 @@
 MH: 0c8e4783f1f8fc7e3a493632574f2597a04f493c0ea9a94c7f554949b6de3c53c49ad04948f1f8e87e3d1e8e4e6d703c1c0e170381c16d91d0f5f0f8fb8d69b681c7e348e61f0fb6
 DCT: 7b56c340b70645bd
 Radial: 40,db,c8,00,f0,64,cc,e9,d1,d0,d7,c2,ff,e6,d1,ec,db,d7,eb,d8,e3,db,d6,e3,d8,de,d5,da,e1,dd,d5,e1,d4,d6,da,d3,e3,da,d6,e2,da
+Expansion: C14
+Manacost: {5}{U}

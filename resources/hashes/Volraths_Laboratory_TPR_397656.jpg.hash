@@ -1,3 +1,5 @@
 MH: 0d8e074381c8fc7e3b4db71589d2b4d70e49493e262cc61f82b44d691c66261e32ce266969c1f0f87c3d1e8e4f6d71f83e3e1f0f8fc96dd8a8fc3e370f885ba481679f8ee3151fb6
 DCT: af11c948ef5012bf
 Radial: 40,c2,ab,00,ff,4c,96,98,bc,b9,c6,c0,d0,d4,b6,d2,b3,be,c8,bc,ce,c1,c3,cb,c4,c5,c8,ca,bd,c4,bd,ca,be,be,c7,bb,c3,bc,c3,be,c1
+Expansion: TPR
+Manacost: {5}

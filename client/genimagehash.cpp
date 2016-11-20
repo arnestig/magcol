@@ -78,7 +78,7 @@ void hashes()
     }
 }
 
-void genHashFromFile( std::string filename )
+void genHashFromFile( std::string filename, std::string expansion, std::string manaCost )
 {
     std::string outputfilename = filename + ".hash";
     FILE *hash_results;
@@ -109,6 +109,8 @@ void genHashFromFile( std::string filename )
     }
     fprintf(hash_results, "\n");
 
+    fprintf(hash_results, "Expansion: %s\nManacost: %s\n",expansion.c_str(), manaCost.c_str() );
+
     std::cout << "Created " << filename << ".hash" << std::endl;
     fclose( hash_results );
 }
@@ -116,8 +118,12 @@ void genHashFromFile( std::string filename )
 
 int main( int argc, char *argv[] )
 {
-    if ( argc == 2 ) {
-        genHashFromFile( argv[1] );
+    std::string expansion;
+    std::string manaCost;
+    if ( argc == 3 ) { expansion = argv[2]; }
+    if ( argc == 4 ) { expansion = argv[2]; manaCost = argv[3]; }
+    if ( argc >= 2 && argc <= 4 ) {
+        genHashFromFile( argv[1], expansion, manaCost );
     } else {
         std::cout << "Error! Usage: genimagehash <filename>" << std::endl;
         return 1;

@@ -1,3 +1,5 @@
 MH: 0d8e874381d0e87c3b6987434a242e6c8924498afa0a19e0a43daa6cecd63c823ef1165e4911e8e4743a1d0e96497c7d1d8ec7038124493e3f1f8fc7e3f32445e1e8fc7e681c6023
 DCT: af034b19af0544fe
 Radial: 40,d5,ba,00,d8,33,f1,ab,97,d9,cd,ce,ed,ff,d0,de,d7,e9,d4,e2,e3,db,cc,d9,dd,da,c9,d8,cd,d3,d4,ce,d7,ce,e0,d8,de,d0,d3,ce,d4
+Expansion: CON
+Manacost: {1}{R}

@@ -1,3 +1,5 @@
 MH: 1d8e070381c0f0703a24c989f1b6d8bbc29224494947e5c56eb49224e62fb3bf545a549324fe3f1b8bc2e3f29624e69e99cccb43b0b624983d9c2e1f0b88b62481c8fc7039c03f96
 DCT: 2e20ba9bbb08ec67
 Radial: 40,ca,cb,14,b5,00,ff,88,8b,ab,f6,b6,b3,ea,ed,b4,be,e3,c8,c2,ce,be,c8,c4,cc,c3,d6,da,bd,cf,cd,c9,bf,da,cf,c3,c5,d5,cb,c6,cc
+Expansion: VIS
+Manacost: {2}{W}

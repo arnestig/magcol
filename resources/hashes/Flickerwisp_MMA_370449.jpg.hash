@@ -1,3 +1,5 @@
 MH: 1d8fc7e070387c7c32690f063c0c40d8729249ee3382ee83a4e5926de307c9da0d268a924d51f0f47c1a1e8f966d77399f1fcfabc1964d787b08fa3b1dae92448e070381e8fc70b2
 DCT: eb05b132ee44ccab
 Radial: 40,d5,c8,00,ff,48,98,a3,d3,c8,f6,cc,ea,ea,db,cb,cf,d8,cc,e1,e6,d9,cb,db,c8,da,da,db,d3,cf,d0,cd,d7,d5,d9,ce,dc,da,d3,cc,d4
+Expansion: MMA
+Manacost: {1}{W}{W}

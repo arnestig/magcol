@@ -1,3 +1,5 @@
 MH: 1e81c463c1d8fc7c3236258f8b4a2ea5c292b69c9e14e06ba21c92b4948a71d63fb30c923681e3d879f4f4749496fc3a1e1cc8e4f8dab6b3f8fd4e571f2892368dc70381c0e02f27
 DCT: eb263656da4189ab
 Radial: 40,be,d2,00,cc,24,58,a6,9f,a1,e6,e6,ff,bc,af,9e,96,8b,cb,b1,d3,b9,c3,cb,a9,c7,d8,d4,d4,d5,d8,be,a5,c3,d2,b4,c7,b9,b8,af,c0
+Expansion: INV
+Manacost: {2}{R}{R}

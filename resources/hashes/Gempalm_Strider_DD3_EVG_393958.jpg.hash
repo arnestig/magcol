@@ -1,3 +1,5 @@
 MH: 0c8e072391f8fc7e3a492b298a1e4d370549495a2270d96c4e284d4948da625cff263c6d48a1d8f478391e8f4e697e3f9f8fc7e3b1e86df1bd1e9e8ec253652281c8eccfc0f22396
 DCT: bb313212bb4c4caf
 Radial: 40,e5,eb,00,f5,83,f5,ff,d3,d1,dd,d1,ed,f8,e4,ea,dd,e5,e8,d8,f6,e6,dc,f4,d7,eb,e0,e3,e4,e0,e2,e5,df,e4,e7,db,ee,e5,e2,e8,e4
+Expansion: DD3_EVG
+Manacost: {1}{G}

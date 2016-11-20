@@ -1,3 +1,5 @@
 MH: 0d8fc7c3f1d81c7e3b49705c1c5ec7c589a24938a3783980766ab24924c16f5e8cd360964901c8e072381e8e966970381c0e07038124d97871d54bae20f52545f1f8fc7e3e1c6722
 DCT: 9b9392666f40d0bd
 Radial: 40,d2,ca,00,ff,35,cb,bd,d4,c3,d5,bb,d6,e9,d5,c6,d2,d6,c1,dc,e1,d5,c1,dd,d2,d8,c7,d8,d8,c6,ce,d0,d1,c8,d1,d1,d9,c9,cf,d3,d2
+Expansion: GTC
+Manacost: {1}{G}

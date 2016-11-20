@@ -1,3 +1,5 @@
 MH: 0d8e078381f8fc7c39499a49aea8b5a96d4d693290b45f3e6056c949592ef78d50e5e94949b1f8fc7c3b1c0e4d6df1f8fc7e270381cd69b1c3f9a1d0ee7c4da683d7878dc11719b2
 DCT: bf747109ab4141be
 Radial: 40,b7,cf,0d,af,00,9a,ab,71,84,ff,b4,cb,e0,c1,ac,aa,bb,b4,b2,c4,b7,a6,bd,af,b1,bc,c5,b5,bd,bd,b2,a7,b7,c3,ac,b9,b8,b4,ad,b4
+Expansion: W16
+Manacost: {3}{W}

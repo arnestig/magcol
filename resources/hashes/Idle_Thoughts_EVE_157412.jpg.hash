@@ -1,3 +1,5 @@
 MH: 0d8ec703d1f8fc7e3b4988f3c5870743a1b669b0b15c6b1c63b3a5693c7818cdd53b53b24971f8ec7e3a1e0ed64970381c0e070381244949d8d47c9f1c8f244c87c6e17038e41d16
 DCT: eb1896d4ef0141be
 Radial: 40,c3,d9,00,ff,3a,8c,ac,8a,c1,d7,bb,dd,d5,a7,b7,bd,c9,d4,c7,d7,c9,b9,d1,ba,cc,c8,c3,c6,bc,b8,c2,c1,c5,cb,c0,cd,c1,ba,c5,c0
+Expansion: EVE
+Manacost: {3}{U}

@@ -1,3 +1,5 @@
 MH: 0d8fc7e3f1389c3a3b698e9e216cc0add6936d466224e0756b159a69a4172978b332274a4971c0fc743d1c0e975971383c0e070b81244921ec6958c34bd5244581c0e270781c6123
 DCT: bb1b9c48ef0616a9
 Radial: 40,a7,96,00,ff,2a,71,a0,ac,8b,a4,9e,b5,a8,9e,b4,a9,a0,a3,a8,ac,ab,9f,ae,9f,a5,a0,a3,a4,a0,a3,a2,ae,a1,a8,a7,b0,a3,a2,ab,a4
+Expansion: AVR
+Manacost: {4}{R}{R}{R}
