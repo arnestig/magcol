@@ -5,6 +5,7 @@
 
 #include "MTGCardDetector.h"
 #include "MTGCardIdentifier.h"
+#include "ManaCostIdentifier.h"
 
 namespace cr
 {
@@ -29,10 +30,12 @@ namespace cr
     private:
         MTGCardDetector m_detector;
         MTGCardIdentifier m_identifier;
+        ManaCostIdentifier m_manaCostIdentifier;
 
         std::string m_outputPath;
         int m_flags;
         unsigned int m_cardCounter;
+        unsigned int m_frameCounter;
     };
 
 }
