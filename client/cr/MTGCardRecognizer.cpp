@@ -113,21 +113,21 @@ void MTGCardRecognizer::onImage(cv::Mat img)
             std::this_thread::sleep_for(std::chrono::milliseconds(500));
         }
 
-
         std::string mansCost = m_manaCostIdentifier.getManaCost(card);
+        //std::string set = setIdentifier(card);
+        cv::Mat symbol;
+        {
+            x = int(card.cols*0.8);
+            y = int(card.rows*0.5);
+            w = card.cols - x;
+            h = int(card.rows*0.7) - y;
 
-        //ManaCost manaCost = m_manaCostIdentifier(card);
-        //std::string set setIdentifier(card);
+            cv::Rect symbolRoI = cv::Rect(x, y, w, h);
+            symbol = card(symbolRoI);
+        }
 
         //m_identifier->identify(MTGCard);
 
-	    x = int(card.cols*0.8);
-	    y = int(card.rows*0.5);
-        w = card.cols - x;
-	    h = int(card.rows*0.7) - y;
-
-        cv::Rect symbolRoI = cv::Rect(x, y, w, h);
-        cv::Mat symbol = card(symbolRoI);
 
 #ifdef DEBUG
         std::stringstream sstr;

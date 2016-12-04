@@ -20,6 +20,8 @@ namespace ih
         virtual void subscribe(ImageSubscriberIfc * subscriber);
         virtual int start();
         virtual void stop() ;
+
+        virtual void setResolution(int width, int height);
     
     private: //methods
         void frameGrabber();

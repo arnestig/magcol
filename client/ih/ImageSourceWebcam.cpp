@@ -36,6 +36,7 @@ void ImageSourceWebcam::subscribe(ImageSubscriberIfc * subscriber)
 int ImageSourceWebcam::start()
 {
     m_capture.open(m_webcamIdx);
+
     if (!m_capture.isOpened())
     {
         printf("--(!)Error opening video capture\n");
@@ -65,6 +66,17 @@ void ImageSourceWebcam::stop()
 
 //------------------------------------------------------------------------------
 
+void ImageSourceWebcam::setResolution(int width, int height)
+{
+    if (m_capture.isOpened())
+    {
+        m_capture.set(CV_CAP_PROP_FRAME_WIDTH, width);
+        m_capture.set(CV_CAP_PROP_FRAME_HEIGHT, height);
+    }
+}
+
+//------------------------------------------------------------------------------
+
 void ImageSourceWebcam::frameGrabber()
 {
     cv::Mat frame;
@@ -73,15 +85,18 @@ void ImageSourceWebcam::frameGrabber()
     {
         if (!m_capture.read(frame))
         {
-            printf(" --(!) frame read error --!");
+            printf(" --(!) webcam frame read error --!\n");
         }
 
-        if (frame.empty())
+        if (!frame.empty())
         {
-            printf(" --(!) No captured frame --!");
+            m_subscriber->onImage(frame);
         }
-
-        m_subscriber->onImage(frame);
+        else
+        {
+            printf(" --(!) No captured webcam frame --!\n");
+            std::this_thread::sleep_for(std::chrono::milliseconds(40));
+        }
     }
 }
 

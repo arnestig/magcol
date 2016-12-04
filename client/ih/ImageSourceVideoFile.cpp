@@ -61,6 +61,16 @@ void ImageSourceVideoFile::stop()
     m_capture.release();
 }
 
+//------------------------------------------------------------------------------
+
+void ImageSourceVideoFile::setResolution(int width, int height)
+{
+    m_capture.set(CV_CAP_PROP_FRAME_WIDTH, width);
+    m_capture.set(CV_CAP_PROP_FRAME_HEIGHT, height);
+}
+
+//------------------------------------------------------------------------------
+
 void ImageSourceVideoFile::frameGrabber()
 {
     cv::Mat frame;
@@ -69,16 +79,19 @@ void ImageSourceVideoFile::frameGrabber()
     {
         if (!m_capture.read(frame))
         {
-            printf(" --(!) frame read error --!");
+            printf(" --(!) video frame read error --!\n");
             break;
         }
 
-        if (frame.empty())
+        if (!frame.empty())
         {
-            printf(" --(!) No captured frame --!");
+            m_subscriber->onImage(frame);
         }
-
-        m_subscriber->onImage(frame);
+        else
+        {
+            printf(" --(!) No captured video frame --!");
+            std::this_thread::sleep_for(std::chrono::milliseconds(40));
+        }
     }
 }
 

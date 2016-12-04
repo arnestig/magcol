@@ -14,6 +14,8 @@ namespace ih
         virtual void subscribe(ImageSubscriberIfc * subscriber) = 0;
         virtual int start() = 0;
         virtual void stop() = 0;
+
+        virtual void setResolution(int width, int height) = 0;
     };
 
 }
