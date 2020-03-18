@@ -8,7 +8,7 @@ function displayCollection( $search_string ) {
     $cardsincollection = $collection->getCollection( $search_string );
 
     $tableGenerator = new TableGenerator();
-    $tableGenerator->addColumn( 'Card', '%s (%s)', array( 'card_name', 'card_expansion' ) );
+    $tableGenerator->addColumn( 'Card', '<a class="thumbnail">%s (%s)<span><img src="resources/images/%s"/><br>%s</span></a>', array( 'card_name', 'card_expansion','card_image_ref','card_oracle' ) );
     $tableGenerator->addColumn( 'Rarity', '%s', array( 'card_rarity' ) );
     $tableGenerator->addColumn( 'Type', '%s', array( 'card_type' ) );
     $tableGenerator->addColumn( '', '<a href="collection.php?remove_card_from_collection=%d">-</a>', array( 'card_id' ) );
@@ -21,7 +21,7 @@ echo '<html>
             <link rel="stylesheet" href="qtip2/jquery.qtip.min.css">
             <link rel="stylesheet" href="magcol.css">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-            <script type="text/javascript" src="qtip2/jquery.qtip.min.js"></script>
+            <!--<script type="text/javascript" src="qtip2/jquery.qtip.min.js"></script>-->
             <script type="text/javascript" src="js/sorttable.js"></script>
             <script type="text/javascript" src="js/scripts.js"></script>
         </head>';
@@ -40,8 +40,6 @@ if ( $_SERVER[ 'REQUEST_METHOD'] === 'POST' ) {
 
 $search_for = "";
 
-
-/* Display a list of our hosts */
 displayCollection( $search_for );
 
 echo '</html>';

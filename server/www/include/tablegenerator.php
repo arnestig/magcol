@@ -48,6 +48,7 @@ class TableGenerator {
                     $ret[] = $this->data[ $c ][ $value ];
                 }
                 vprintf($this->cols[ $i ]->format, $ret);
+                unset($ret);
                 echo '</td>';
             }
             echo '</tr>';

@@ -1,3 +1,4 @@
 client/imagerecognition
 client/cardtracking
 client/obj
+*.jpg

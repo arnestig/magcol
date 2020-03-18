@@ -1,35 +1,32 @@
-img.resize{
-    width:250px;
-    height: auto;
+.thumbnail{
+    position: relative;
+    z-index: 0;
 }
 
-body{
-        padding: 50px;
+.thumbnail:hover{
+    background-color: transparent;
+    z-index: 50;
 }
 
-.qtip-wiki{
-        max-width: 385px;
+.thumbnail span{ /*CSS for enlarged image*/
+    position: absolute;
+    background-color: lightyellow;
+    padding: 5px;
+    left: -1000px;
+    border: 1px dashed gray;
+    visibility: hidden;
+    color: black;
+    text-decoration: none;
 }
 
-.qtip-wiki p{
-        margin: 0 0 6px;
+.thumbnail span img{ /*CSS for enlarged image*/
+    border-width: 0;
+    padding: 2px;
 }
 
-.qtip-wiki h1{
-        font-size: 20px;
-            line-height: 1.1;
-                margin: 0 0 5px;
-}
+.thumbnail:hover span{ /*CSS for enlarged image on hover*/
+    visibility: visible;
+    top: 0;
+    left: 60px; /*position where enlarged image should offset horizontally */
 
-.qtip-wiki img{
-        float: left;
-            margin: 0px 0px 0px 0;
-}
-
-.qtip-wiki .info{
-        overflow: hidden;
-}
-
-.qtip-wiki p.note{
-        font-weight: 700;
 }
