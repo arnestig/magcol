@@ -14,7 +14,7 @@ class Collection
     public function addCardToCollection( $cardname, $cardexpansion )
     {
         $sth = $this->dbcon->prepare( "SELECT add_card_to_collection( ?, ?, ? )" );
-        $sth->execute( array( 0, $cardname, $cardexpansion ) );
+        $sth->execute( array( 1, $cardname, $cardexpansion ) );
     }
 
     public function removeCardFromCollection( $cardid )

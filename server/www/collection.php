@@ -22,7 +22,7 @@ echo '<html>
             <link rel="stylesheet" href="magcol.css">
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
             <script type="text/javascript" src="qtip2/jquery.qtip.min.js"></script>
-            <script type="text/javascript" src="include/sorttable.js"></script>
+            <script type="text/javascript" src="js/sorttable.js"></script>
             <script type="text/javascript" src="js/scripts.js"></script>
         </head>';
 
@@ -39,8 +39,6 @@ if ( $_SERVER[ 'REQUEST_METHOD'] === 'POST' ) {
 }
 
 $search_for = "";
-
-echo '<a href="card.html">Snapcaster Mage</a>';
 
 
 /* Display a list of our hosts */
