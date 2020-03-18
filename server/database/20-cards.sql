@@ -69,5 +69,6 @@ open ref1 for
 return next ref1;
 end;
 $$ language plpgsql;
-alter function add_card(varchar) owner to dbamagcol;
+
+alter function get_cards(varchar) owner to dbamagcol;
 

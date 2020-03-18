@@ -17,13 +17,13 @@ alter table collection owner to dbamagcol;
 -- add_card_to_collection
 create or replace function add_card_to_collection(
     c_user smallint,
-    c_card varchar,
+    c_card_name varchar,
     c_expansion varchar )
 returns void as $$
 declare
     c_card_id integer;
 begin
-    SELECT INTO c_card_id card_id FROM cards WHERE cards.card_name = c_card AND cards.card_expansion = c_expansion;
+    SELECT INTO c_card_id card_id FROM cards WHERE cards.card_name = c_card_name AND cards.card_expansion = c_expansion;
     insert into collection( 
         collection_usr_id, 
         collection_card, 
@@ -36,7 +36,7 @@ begin
         1 );
 end;
 $$ language plpgsql;
-alter function add_card_to_collection(smallint,integer,varchar,smallint) owner to dbamagcol;
+alter function add_card_to_collection(smallint,varchar,varchar) owner to dbamagcol;
 
 -- remove_card_from_collection
 create or replace function remove_card_from_collection(

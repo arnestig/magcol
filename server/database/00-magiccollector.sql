@@ -1,6 +1,7 @@
 -- WARNING
--- DROP DATABASE magcol;
--- DROP USER dbamagcol;
+DROP DATABASE magcol;
+DROP OWNED BY dbamagcol;
+DROP USER dbamagcol;
 -- WARNING
 
 create user dbamagcol with password 'magcol';
