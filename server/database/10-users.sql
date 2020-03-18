@@ -9,3 +9,5 @@ create table users (
         user_email varchar
         );
 alter table users owner to dbamagcol;
+
+insert into users (user_name,user_email) values( 'admin', '' );

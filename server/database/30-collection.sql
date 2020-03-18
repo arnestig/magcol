@@ -5,8 +5,8 @@ alter sequence sq_collection_id owner to dbamagcol;
 
 create table collection (
         collection_id integer primary key default nextval('sq_collection_id'),
-        collection_usr_id smallint not null references users,
-        collection_card integer not null references cards,
+        collection_usr_id smallint not null references users(user_id),
+        collection_card integer not null references cards(card_id),
         collection_quality varchar,
         collection_quantity smallint
         );
