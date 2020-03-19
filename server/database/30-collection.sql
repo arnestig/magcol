@@ -6,7 +6,7 @@ alter sequence sq_collection_id owner to dbamagcol;
 create table collection (
         collection_id integer primary key default nextval('sq_collection_id'),
         collection_usr_id smallint not null references users(user_id),
-        collection_card integer not null references cards(card_id),
+        collection_card uuid not null references cards(card_id),
         collection_quality varchar,
         collection_quantity smallint
         );
@@ -17,26 +17,22 @@ alter table collection owner to dbamagcol;
 -- add_card_to_collection
 create or replace function add_card_to_collection(
     c_user smallint,
-    c_card_name varchar,
-    c_expansion varchar )
+    c_card uuid )
 returns void as $$
-declare
-    c_card_id integer;
 begin
-    SELECT INTO c_card_id card_id FROM cards WHERE cards.card_name = c_card_name AND cards.card_expansion = c_expansion;
-    insert into collection( 
-        collection_usr_id, 
-        collection_card, 
-        collection_quality, 
+    insert into collection(
+        collection_usr_id,
+        collection_card,
+        collection_quality,
         collection_quantity )
-    values( 
+    values(
         c_user,
-        c_card_id,
+        c_card,
         'NM',
         1 );
 end;
 $$ language plpgsql;
-alter function add_card_to_collection(smallint,varchar,varchar) owner to dbamagcol;
+alter function add_card_to_collection(smallint,uuid) owner to dbamagcol;
 
 -- remove_card_from_collection
 create or replace function remove_card_from_collection(

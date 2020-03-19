@@ -11,7 +11,7 @@ function displayCards( $search_string ) {
     $tableGenerator->addColumn( 'Card', '<a class="thumbnail">%s (%s)<span><img src="resources/images/%s"/></span></a>', array( 'card_name', 'card_expansion','card_image_ref' ) );
     $tableGenerator->addColumn( 'Rarity', '%s', array( 'card_rarity' ) );
     $tableGenerator->addColumn( 'Type', '%s', array( 'card_type' ) );
-    $tableGenerator->addColumn( '', '<a href="collection.php?add_card=%s,%s">+</a>', array( 'card_name', 'card_expansion' ) );
+    $tableGenerator->addColumn( '', '<a href="collection.php?add_card=%s">+</a>', array( 'card_id' ) );
     $tableGenerator->setData( $cards );
     echo $tableGenerator->generateHTML();
 }

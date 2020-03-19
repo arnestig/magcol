@@ -76,15 +76,16 @@ $sth->execute();
 $sth = $dbh->prepare( 'COMMIT;' );
 
 foreach ( keys %::CARDS ) {
-    $sth = $dbh->prepare( 'SELECT add_card( ?, ?, ?, ?, ?, ?, ?, ? )' );
-    $sth->bind_param( 1, $::CARDS{ $_ }{ exp } );
-    $sth->bind_param( 2, $::CARDS{ $_ }{ name } );
-    $sth->bind_param( 3, $::CARDS{ $_ }{ rarity } );
-    $sth->bind_param( 4, $::CARDS{ $_ }{ type } );
-    $sth->bind_param( 5, $::CARDS{ $_ }{ subtype } );
-    $sth->bind_param( 6, $::CARDS{ $_ }{ oracle } );
-    $sth->bind_param( 7, $::CARDS{ $_ }{ cost } );
-    $sth->bind_param( 8, $::CARDS{ $_ }{ img_ref } );
+    $sth = $dbh->prepare( 'SELECT add_card( ?, ?, ?, ?, ?, ?, ?, ?, ? )' );
+    $sth->bind_param( 1, $_ );
+    $sth->bind_param( 2, $::CARDS{ $_ }{ exp } );
+    $sth->bind_param( 3, $::CARDS{ $_ }{ name } );
+    $sth->bind_param( 4, $::CARDS{ $_ }{ rarity } );
+    $sth->bind_param( 5, $::CARDS{ $_ }{ type } );
+    $sth->bind_param( 6, $::CARDS{ $_ }{ subtype } );
+    $sth->bind_param( 7, $::CARDS{ $_ }{ oracle } );
+    $sth->bind_param( 8, $::CARDS{ $_ }{ cost } );
+    $sth->bind_param( 9, $::CARDS{ $_ }{ img_ref } );
     $sth->execute();
 }
 # cleanup database transaction

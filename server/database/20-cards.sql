@@ -1,10 +1,7 @@
 \c magcol;
 
-create sequence sq_cards_id start with 1;
-alter sequence sq_cards_id owner to dbamagcol;
-
 create table cards (
-        card_id integer primary key default nextval('sq_cards_id'),
+        card_id uuid primary key not null,
         card_expansion varchar,
         card_name varchar,
         card_rarity varchar,
@@ -20,6 +17,7 @@ alter table cards owner to dbamagcol;
 --
 -- add_card
 create or replace function add_card(
+    c_id uuid,
     c_expansion varchar,
     c_name varchar,
     c_rarity varchar,
@@ -32,6 +30,7 @@ returns void as $$
 declare
 begin
     insert into cards( 
+        card_id,
         card_expansion, 
         card_name, 
         card_rarity, 
@@ -41,6 +40,7 @@ begin
         card_cost, 
         card_image_ref ) 
     values( 
+        c_id,
         c_expansion, 
         c_name, 
         c_rarity, 
@@ -52,7 +52,7 @@ begin
     
 end;
 $$ language plpgsql;
-alter function add_card(varchar,varchar,varchar,varchar,varchar,varchar,varchar,varchar) owner to dbamagcol;
+alter function add_card(uuid,varchar,varchar,varchar,varchar,varchar,varchar,varchar,varchar) owner to dbamagcol;
 
 -- get_cards
 create or replace function get_cards(

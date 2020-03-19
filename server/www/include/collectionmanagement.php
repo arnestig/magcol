@@ -11,10 +11,10 @@ class Collection
         $this->dbcon->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
-    public function addCardToCollection( $cardname, $cardexpansion )
+    public function addCardToCollection( $cardid )
     {
-        $sth = $this->dbcon->prepare( "SELECT add_card_to_collection( ?, ?, ? )" );
-        $sth->execute( array( 1, $cardname, $cardexpansion ) );
+        $sth = $this->dbcon->prepare( "SELECT add_card_to_collection( ?, ? )" );
+        $sth->execute( array( 1, $cardid ) );
     }
 
     public function removeCardFromCollection( $cardid )
