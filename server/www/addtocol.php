@@ -1,6 +1,19 @@
 <?php
 
+include_once( "include/carddatabase.php" );
 include_once( "include/collectionmanagement.php" );
+
+# up here we check if we are searching for cards
+/* Handle our different POST's on this page */
+if ( $_SERVER[ 'REQUEST_METHOD'] === 'POST' ) {
+    if ( isset( $_POST[ 'getCards' ] ) ) {
+        $carddb = new CardDatabase();
+        $cards = $carddb->getCards( $_POST[ 'getCards' ] );
+        print json_encode( $cards );
+        exit;
+    }
+}
+
 
 echo '
 <!DOCTYPE html>
@@ -17,7 +30,7 @@ function populateCards() {
         return;
     }
     $.ajax({
-        url: 'cards.php',
+        url: 'addtocol.php',
         data: "getCards="+searchString,
         dataType: "json",
         method: "POST",
@@ -44,8 +57,8 @@ echo '
 </head>
 <body>
 
-<FORM action="addtocol.php" method="post">
-    <input list="cardList" autofocus autocomplete=on id="cardSearchBox" name="cardSearchBox" oninput="populateCards()">
+<FORM action="addtocol.php" autocomplete=off method="post">
+    <input list="cardList" autofocus id="cardSearchBox" name="cardSearchBox" oninput="populateCards()">
     <datalist id="cardList"></datalist>
 </FORM>
 
