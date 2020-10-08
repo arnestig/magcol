@@ -48,7 +48,7 @@ begin
         c_subtype, 
         c_oracle, 
         c_cost, 
-        c_image_ref );
+        c_image_ref ) ON CONFLICT DO NOTHING;
     
 end;
 $$ language plpgsql;

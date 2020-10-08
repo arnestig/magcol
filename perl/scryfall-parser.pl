@@ -16,7 +16,7 @@ sub download_image
 {
     my($id,$uri) = @_;
     if ( ! -e "../resources/images/$id.jpg" ) {
-        print "Downloading $id\n";
+        print "Downloading $uri\n";
         system( "curl '$uri' -o ../resources/images/$id.jpg --silent" );
     }
 }
@@ -26,27 +26,30 @@ my @jsstr = <JSON_DB>;
 close( JSON_DB );
 my $json_ref = decode_json(join('',@jsstr));
 my $cou = 0;
+printf "Parsing cards";
 foreach my $card ( @{ $json_ref } ) {
     if ( $card->{ lang } eq "en" ) {
         my $str = "$card->{ name }¤$card->{ id }¤$card->{ mana_cost }¤$card->{ set }¤$card->{ type_line }¤$card->{ image_uris }->{ normal }¤$card->{ oracle_text }";
         foreach my $key ( qw{name id mana_cost set type_line oracle_text} ) {
-            $card->{ $key } =~ s/—/-/g;
-            $card->{ $key } =~ s/−/-/g;
-            $card->{ $key } =~ s/•/-/g;
-            $card->{ $key } =~ s/☐/-/g;
-            $card->{ $key } =~ s/’/'/g;
-            $card->{ $key } =~ s/π/pi/g;
-            $card->{ $key } =~ s/∞/infinite/g;
-            $card->{ $key } =~ s/®//g;
-            $card->{ $key } =~ s/™//g;
-            $card->{ $key } =~ s/\n/<br>/g;
+            if ( defined $card->{ $key } ) {
+                $card->{ $key } =~ s/—/-/g;
+                $card->{ $key } =~ s/−/-/g;
+                $card->{ $key } =~ s/•/-/g;
+                $card->{ $key } =~ s/☐/-/g;
+                $card->{ $key } =~ s/’/'/g;
+                $card->{ $key } =~ s/π/pi/g;
+                $card->{ $key } =~ s/∞/infinite/g;
+                $card->{ $key } =~ s/®//g;
+                $card->{ $key } =~ s/™//g;
+                $card->{ $key } =~ s/\n/<br>/g;
+            }
         }
         # my $success = utf8::downgrade($str, 1 );
         # if ( ! $success ) {
         #     print "FAIL: $str\n";
         #     exit;
         # }
-        download_image($card->{ id }, $card->{ image_uris }->{ normal });
+        # download_image($card->{ id }, $card->{ image_uris }->{ normal });
         $::CARDS{ $card->{ id } }{ exp } = $card->{ set };
         $::CARDS{ $card->{ id } }{ rarity } = $card->{ rarity };
         $::CARDS{ $card->{ id } }{ name } = $card->{ name };
@@ -55,25 +58,24 @@ foreach my $card ( @{ $json_ref } ) {
         $::CARDS{ $card->{ id } }{ oracle } = $card->{ oracle_text };
         $::CARDS{ $card->{ id } }{ cost } = $card->{ mana_cost };
         $::CARDS{ $card->{ id } }{ img_ref } = "$card->{ id }.jpg";
+        $::PRICES{ $card->{ id } }{ usd } = $card->{ prices }->{ usd };
+        $::PRICES{ $card->{ id } }{ usd_foil } = $card->{ prices }->{ usd_foil };
         # print CSV_DUMP "$str\n";
-        if ( $cou++ > 100 ) {
-            last;
+        if ( ($cou++ % 1000) == 0 ) {
+            printf ".";
         }
     }
 }
 
+printf "\nStoring in database\n";
 
 # connect to our database
 my $dbh = DBI->connect("DBI:Pg:dbname=magcol;host=localhost", "dbamagcol", "magcol", {'RaiseError' => 1});
 
-my %hostinfo;
-my @hosts_to_scan;
 $dbh->{ AutoCommit } = 0;
 
-# update database with current status of the hosts
+# update database with cards
 my $sth = $dbh->prepare( 'BEGIN;' );
-$sth->execute();
-$sth = $dbh->prepare( 'COMMIT;' );
 
 foreach ( keys %::CARDS ) {
     $sth = $dbh->prepare( 'SELECT add_card( ?, ?, ?, ?, ?, ?, ?, ?, ? )' );
@@ -94,7 +96,24 @@ $sth->execute();
 $sth->finish();
 
 $dbh->commit();
-#
+
+# update database with prices
+$sth = $dbh->prepare( 'BEGIN;' );
+
+foreach ( keys %::PRICES ) {
+    $sth = $dbh->prepare( 'SELECT add_price( ?, ?, ? )' );
+    $sth->bind_param( 1, $_ );
+    $sth->bind_param( 2, $::PRICES{ $_ }{ usd } );
+    $sth->bind_param( 3, $::PRICES{ $_ }{ usd_foil } );
+    $sth->execute();
+}
+# cleanup database transaction
+$sth = $dbh->prepare( 'COMMIT;' );
+$sth->execute();
+$sth->finish();
+
+$dbh->commit();
+
 # clean up
 $dbh->disconnect();
 

@@ -13,13 +13,10 @@ For running and developing magcol you will need the following packages:
 
 Installing on a Debian-based system you can:
 ```
-apt-get install php5 perl postgresql postgresql-contrib-9.4
+apt-get install php7.3 perl libdbd-pg-perl postgresql postgresql-contrib
 ```
 
-Update the file /etc/postgresql/9.4/main/pg_hba.conf and change 'peer' to 'md5' on the following line:
-```
-"local   all             all                                peer"
-```
+Update the file /etc/postgresql/11/main/pg_hba.conf and set trust as authentication method for local sessions
 
 Restart the service via /etc/init.d/postgresql restart
 
