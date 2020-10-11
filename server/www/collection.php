@@ -8,7 +8,7 @@ function displayCollection( $search_string ) {
     $cardsincollection = $collection->getCollection( $search_string );
 
     $tableGenerator = new TableGenerator();
-    $tableGenerator->addColumn( 'Card', '<a class="thumbnail">%s (%s)<span><img src="resources/images/%s"/><br>%s</span></a>', array( 'card_name', 'card_expansion','card_image_ref','card_oracle' ) );
+    $tableGenerator->addColumn( 'Card', '<a class="thumbnail">%s (%s)<span><img src="resources/images/%s.jpg"/><br>%s</span></a>', array( 'card_name', 'card_expansion','card_id','card_oracle' ) );
     $tableGenerator->addColumn( 'Rarity', '%s', array( 'card_rarity' ) );
     $tableGenerator->addColumn( 'Type', '%s', array( 'card_type' ) );
     $tableGenerator->addColumn( '', '<a href="collection.php?remove_card_from_collection=%d">-</a>', array( 'card_id' ) );

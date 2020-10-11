@@ -8,7 +8,7 @@ function displayCards( $search_string ) {
     $cards = $carddb->getCards( $search_string );
 
     $tableGenerator = new TableGenerator();
-    $tableGenerator->addColumn( 'Card', '<a class="thumbnail">%s (%s)<span><img src="resources/images/%s"/></span></a>', array( 'card_name', 'card_expansion','card_image_ref' ) );
+    $tableGenerator->addColumn( 'Card', '<a class="thumbnail">%s (%s)<span><img src="resources/images/%s.jpg"/></span></a>', array( 'card_name', 'card_expansion','card_id' ) );
     $tableGenerator->addColumn( 'Rarity', '%s', array( 'card_rarity' ) );
     $tableGenerator->addColumn( 'Type', '%s', array( 'card_type' ) );
     $tableGenerator->addColumn( '', '<a href="collection.php?add_card=%s">+</a>', array( 'card_id' ) );

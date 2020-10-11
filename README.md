@@ -13,7 +13,7 @@ For running and developing magcol you will need the following packages:
 
 Installing on a Debian-based system you can:
 ```
-apt-get install php7.3 perl libdbd-pg-perl postgresql postgresql-contrib
+apt-get install php7.3 perl libjson-perl libdbd-pg-perl postgresql postgresql-contrib
 ```
 
 Update the file /etc/postgresql/11/main/pg_hba.conf and set trust as authentication method for local sessions

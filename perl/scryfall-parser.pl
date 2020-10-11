@@ -57,7 +57,7 @@ foreach my $card ( @{ $json_ref } ) {
         $::CARDS{ $card->{ id } }{ subtype } = "";
         $::CARDS{ $card->{ id } }{ oracle } = $card->{ oracle_text };
         $::CARDS{ $card->{ id } }{ cost } = $card->{ mana_cost };
-        $::CARDS{ $card->{ id } }{ img_ref } = "$card->{ id }.jpg";
+        $::CARDS{ $card->{ id } }{ image_uri } = $card->{ image_uris }->{ normal };
         $::PRICES{ $card->{ id } }{ usd } = $card->{ prices }->{ usd };
         $::PRICES{ $card->{ id } }{ usd_foil } = $card->{ prices }->{ usd_foil };
         # print CSV_DUMP "$str\n";
@@ -87,7 +87,7 @@ foreach ( keys %::CARDS ) {
     $sth->bind_param( 6, $::CARDS{ $_ }{ subtype } );
     $sth->bind_param( 7, $::CARDS{ $_ }{ oracle } );
     $sth->bind_param( 8, $::CARDS{ $_ }{ cost } );
-    $sth->bind_param( 9, $::CARDS{ $_ }{ img_ref } );
+    $sth->bind_param( 9, $::CARDS{ $_ }{ image_uri } );
     $sth->execute();
 }
 # cleanup database transaction

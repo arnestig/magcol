@@ -9,7 +9,7 @@ create table cards (
         card_subtype varchar,
         card_oracle varchar,
         card_cost varchar,
-        card_image_ref varchar
+        card_image_uri varchar
         );
 alter table cards owner to dbamagcol;
 
@@ -25,7 +25,7 @@ create or replace function add_card(
     c_subtype varchar,
     c_oracle varchar,
     c_cost varchar,
-    c_image_ref varchar )
+    c_image_uri varchar)
 returns void as $$
 declare
 begin
@@ -38,7 +38,7 @@ begin
         card_subtype, 
         card_oracle, 
         card_cost, 
-        card_image_ref ) 
+	card_image_uri) 
     values( 
         c_id,
         c_expansion, 
@@ -48,7 +48,7 @@ begin
         c_subtype, 
         c_oracle, 
         c_cost, 
-        c_image_ref ) ON CONFLICT DO NOTHING;
+	c_image_uri) ON CONFLICT DO NOTHING;
     
 end;
 $$ language plpgsql;
@@ -72,3 +72,16 @@ $$ language plpgsql;
 
 alter function get_cards(varchar) owner to dbamagcol;
 
+-- get_cards_img_refs
+create or replace function get_cards_image_uri()
+returns SETOF refcursor as $$
+declare
+ref1 refcursor;
+begin
+open ref1 for
+	SELECT card_id, card_image_uri FROM cards;
+return next ref1;
+end;
+$$ language plpgsql;
+
+alter function get_cards_image_uri() owner to dbamagcol;
